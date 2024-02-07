@@ -21,6 +21,17 @@ class TestBaseModel(unittest.TestCase):
         self.assertIsInstance(b1.id, str)
         self.assertIsInstance(b1.created_at, datetime)
         self.assertIsInstance(b1.updated_at, datetime)
+        model_json = b1.to_dict()
+        self.assertIsInstance(model_json, dict)
+        self.assertEqual(model_json["id"], b1.id)
+        self.assertEqual(model_json["created_at"], b1.created_at.isoformat())
+        self.assertEqual(model_json["updated_at"], b1.updated_at.isoformat())
+        self.assertEqual(model_json["__class__"], "BaseModel")
+        b1m = BaseModel(**model_json)
+        self.assertIsInstance(b1m, BaseModel)
+        self.assertEqual(b1m.id, b1.id)
+        self.assertEqual(b1m.created_at, b1.created_at)
+        self.assertEqual(b1m.updated_at, b1.updated_at)
 
     def test_str(self):
         """
