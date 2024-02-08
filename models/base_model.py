@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+
 """
 This module contains the base model class
 - BaseModel: the base model class
@@ -16,15 +17,16 @@ This module contains the base model class
   - to_dict(self): returns a dictionary containing all keys/values of
     __dict__ of the instance
 """
+
 import uuid
 from datetime import datetime
-import models
+from models import storage
 
 
 class BaseModel:
     """The BaseModel class"""
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, **kwargs):
         """Initializes the BaseModel class"""
         if kwargs:
             for key, value in kwargs.items():
@@ -36,10 +38,12 @@ class BaseModel:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
+            storage.new(self)
 
     def save(self) -> None:
         """Updates the public instance attribute updated_at with the current datetime"""
         self.updated_at = datetime.now()
+        storage.save()
 
     def to_dict(self) -> dict:
         """Returns a dictionary containing all keys/values of __dict__ of the instance"""

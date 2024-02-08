@@ -5,6 +5,7 @@ This module contains the tests for the base_model module
 import unittest
 from models.base_model import BaseModel
 from datetime import datetime
+from models import storage
 
 
 class TestBaseModel(unittest.TestCase):
@@ -12,7 +13,7 @@ class TestBaseModel(unittest.TestCase):
     This class contains the tests for the BaseModel class
     """
 
-    def test_init(self):
+    def test_init(self) -> None:
         """
         This method tests the __init__ method of the BaseModel class
         """
@@ -33,7 +34,7 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(b1m.created_at, b1.created_at)
         self.assertEqual(b1m.updated_at, b1.updated_at)
 
-    def test_str(self):
+    def test_str(self) -> None:
         """
         This method tests the __str__ method of the BaseModel class
         """
@@ -46,7 +47,7 @@ class TestBaseModel(unittest.TestCase):
         self.assertIsInstance(b2.created_at, datetime)
         self.assertIsInstance(b2.updated_at, datetime)
 
-    def test_save(self):
+    def test_save(self) -> None:
         """
         This method tests the save method of the BaseModel class
         """
@@ -60,7 +61,7 @@ class TestBaseModel(unittest.TestCase):
         self.assertIsInstance(b3.updated_at, datetime)
         self.assertNotEqual(b3.updated_at, i1)
 
-    def test_to_dict(self):
+    def test_to_dict(self) -> None:
         """
         This method tests the to_dict method of the BaseModel class
         """
@@ -75,3 +76,28 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(d1["created_at"], b4.created_at.isoformat())
         self.assertEqual(d1["updated_at"], b4.updated_at.isoformat())
         self.assertEqual(d1["__class__"], "BaseModel")
+
+    def test_storage(self) -> None:
+        """
+        This method tests the storage attribute of the BaseModel class
+        """
+        b5 = BaseModel()
+        self.assertIsInstance(b5, BaseModel)
+        self.assertIsInstance(b5.id, str)
+        self.assertIsInstance(b5.created_at, datetime)
+        self.assertIsInstance(b5.updated_at, datetime)
+        self.assertIsInstance(storage.all(), dict)
+        self.assertIn(f"BaseModel.{b5.id}", storage.all().keys())
+        self.assertEqual(b5, storage.all()[f"BaseModel.{b5.id}"])
+        b5.save()
+        self.assertIsInstance(storage.all(), dict)
+        self.assertIn(f"BaseModel.{b5.id}", storage.all().keys())
+        self.assertEqual(b5, storage.all()[f"BaseModel.{b5.id}"])
+        b5d = b5.to_dict()
+        self.assertIsInstance(b5d, dict)
+        self.assertEqual(b5d["id"], b5.id)
+        self.assertEqual(b5d["created_at"], b5.created_at.isoformat())
+        self.assertEqual(b5d["updated_at"], b5.updated_at.isoformat())
+        self.assertEqual(b5d["__class__"], "BaseModel")
+        b5.save()
+        self.assertIsInstance(storage.all(), dict)
