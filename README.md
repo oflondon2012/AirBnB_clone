@@ -1,6 +1,8 @@
-# AirBnB Clone - The Console
+<div align="center">
+  <h1>HBNB - The Console <img src="https://i.imgur.com/elr4ah9.png" width=55 align=center> </h1>
+</div>
 
-![AirBnB Clone - The Console](https://i.imgur.com/3v3v3zV.png)
+![AirBnB Clone](https://camo.githubusercontent.com/0abfd1a3534470d279dd6eaca57e0b4b81e23fb77afd81483d470c2f63ab51d3/68747470733a2f2f692e696d6775722e636f6d2f4d5171334142632e706e67)
 
 ## Description
 
