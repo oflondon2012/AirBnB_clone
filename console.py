@@ -163,8 +163,8 @@ class HBNBCommand(cmd.Cmd):
         from models import available_models, storage
 
         args_dict = {
-            "all": self.do_all,
-            "count": self.do_count,
+            "all()": self.do_all,
+            "count()": self.do_count,
             "show": self.do_show,
             "destroy": self.do_destroy,
             "update": self.do_update,
