@@ -33,8 +33,12 @@ class TestState(unittest.TestCase):
         self.assertEqual(state_dict["__class__"], "State")
         self.assertIsInstance(state_dict["created_at"], str)
         self.assertIsInstance(state_dict["updated_at"], str)
-        self.assertEqual(state_dict["created_at"], state.created_at.isoformat())
-        self.assertEqual(state_dict["updated_at"], state.updated_at.isoformat())
+        self.assertEqual(
+            state_dict["created_at"], state.created_at.isoformat()
+        )
+        self.assertEqual(
+            state_dict["updated_at"], state.updated_at.isoformat()
+        )
 
     def test_save(self):
         """Test the save method of the State class."""

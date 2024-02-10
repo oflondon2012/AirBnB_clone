@@ -28,6 +28,7 @@ class BaseModel:
     def __init__(self, **kwargs):
         """Initializes the BaseModel class"""
         from models import storage
+
         if kwargs:
             for key, value in kwargs.items():
                 if key == "created_at" or key == "updated_at":
@@ -41,13 +42,20 @@ class BaseModel:
             storage.new(self)
 
     def save(self) -> None:
-        """Updates the public instance attribute updated_at with the current datetime"""
+        """
+        Updates the public instance attribute updated_at with the current
+        datetime
+        """
         from models import storage
+
         self.updated_at = datetime.now()
         storage.save()
 
     def to_dict(self) -> dict:
-        """Returns a dictionary containing all keys/values of __dict__ of the instance"""
+        """
+        Returns a dictionary containing all keys/values of __dict__ of the
+        instance
+        """
         new_dict = self.__dict__.copy()
         new_dict["__class__"] = self.__class__.__name__
         new_dict["created_at"] = self.created_at.isoformat()

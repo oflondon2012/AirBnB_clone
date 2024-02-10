@@ -35,8 +35,12 @@ class TestReview(unittest.TestCase):
         self.assertEqual(review_dict["__class__"], "Review")
         self.assertIsInstance(review_dict["created_at"], str)
         self.assertIsInstance(review_dict["updated_at"], str)
-        self.assertEqual(review_dict["created_at"], review.created_at.isoformat())
-        self.assertEqual(review_dict["updated_at"], review.updated_at.isoformat())
+        self.assertEqual(
+            review_dict["created_at"], review.created_at.isoformat()
+        )
+        self.assertEqual(
+            review_dict["updated_at"], review.updated_at.isoformat()
+        )
 
     def test_save(self):
         """Test the save method of the Review class."""

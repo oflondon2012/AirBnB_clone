@@ -43,6 +43,7 @@ class FileStorage:
         from models.amenity import Amenity
         from models.place import Place
         from models.review import Review
+
         try:
             with open(FileStorage.__file_path, "r") as f:
                 new_dict = json.load(f)

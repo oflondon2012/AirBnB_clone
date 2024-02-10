@@ -43,8 +43,7 @@ class TestBaseModel(unittest.TestCase):
         b2 = BaseModel()
         self.assertIsInstance(b2, BaseModel)
         self.assertIsInstance(b2.__str__(), str)
-        self.assertEqual(
-            b2.__str__(), f"[BaseModel] ({b2.id}) {b2.__dict__}")
+        self.assertEqual(b2.__str__(), f"[BaseModel] ({b2.id}) {b2.__dict__}")
         self.assertIsInstance(b2.id, str)
         self.assertIsInstance(b2.created_at, datetime)
         self.assertIsInstance(b2.updated_at, datetime)
