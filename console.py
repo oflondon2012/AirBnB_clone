@@ -136,26 +136,26 @@ class HBNBCommand(cmd.Cmd):
             setattr(instance, args[2], args[3])
             instance.save()
 
-    # def default(self, line):
-    #     """
-    #     Default command to handle all other commands
-    #     """
-    #     from models import available_models, storage
+    def default(self, line):
+        """
+        Default command to handle all other commands
+        """
+        from models import available_models, storage
 
-    #     args = line.split(".")
-    #     if args[0] in available_models:
-    #         if args[1] == "all()":
-    #             print(
-    #                 [
-    #                     str(value)
-    #                     for key, value in storage.all().items()
-    #                     if key.split(".")[0] == args[0]
-    #                 ]
-    #             )
-    #         else:
-    #             print("** no instance found **")
-    #     else:
-    #         print("** class doesn't exist **")
+        args = line.split(".")
+        if args[0] in available_models:
+            if args[1] == "all()":
+                print(
+                    [
+                        str(value)
+                        for key, value in storage.all().items()
+                        if key.split(".")[0] == args[0]
+                    ]
+                )
+            else:
+                print("** no instance found **")
+        else:
+            print("** class doesn't exist **")
 
 
 if __name__ == "__main__":
