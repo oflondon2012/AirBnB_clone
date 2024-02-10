@@ -87,8 +87,8 @@ class HBNBCommand(cmd.Cmd):
 
     def do_all(self, arg):
         """
-        All command to print all string representation of all instances based on
-        the class name
+        All command to print all string representation of all instances based
+        on the class name
         """
         from models import available_models, storage
 

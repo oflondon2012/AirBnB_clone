@@ -42,12 +42,12 @@ class TestUser(unittest.TestCase):
         u1 = User()
         self.assertIsInstance(u1.email, str)
         self.assertEqual(u1.email, "")
-        u1.email = ''
+        u1.email = ""
         self.assertEqual(u1.email, "")
-        u1.email = 'a'
-        self.assertEqual(u1.email, 'a')
-        u1.email = 'abc'
-        self.assertEqual(u1.email, 'abc')
+        u1.email = "a"
+        self.assertEqual(u1.email, "a")
+        u1.email = "abc"
+        self.assertEqual(u1.email, "abc")
 
     def test_password(self) -> None:
         """
@@ -56,12 +56,12 @@ class TestUser(unittest.TestCase):
         u1 = User()
         self.assertIsInstance(u1.password, str)
         self.assertEqual(u1.password, "")
-        u1.password = ''
+        u1.password = ""
         self.assertEqual(u1.password, "")
-        u1.password = 'a'
-        self.assertEqual(u1.password, 'a')
-        u1.password = 'abc'
-        self.assertEqual(u1.password, 'abc')
+        u1.password = "a"
+        self.assertEqual(u1.password, "a")
+        u1.password = "abc"
+        self.assertEqual(u1.password, "abc")
 
     def test_first_name(self) -> None:
         """
@@ -70,12 +70,12 @@ class TestUser(unittest.TestCase):
         u1 = User()
         self.assertIsInstance(u1.first_name, str)
         self.assertEqual(u1.first_name, "")
-        u1.first_name = ''
+        u1.first_name = ""
         self.assertEqual(u1.first_name, "")
-        u1.first_name = 'a'
-        self.assertEqual(u1.first_name, 'a')
-        u1.first_name = 'abc'
-        self.assertEqual(u1.first_name, 'abc')
+        u1.first_name = "a"
+        self.assertEqual(u1.first_name, "a")
+        u1.first_name = "abc"
+        self.assertEqual(u1.first_name, "abc")
 
     def test_last_name(self) -> None:
         """
@@ -84,12 +84,12 @@ class TestUser(unittest.TestCase):
         u1 = User()
         self.assertIsInstance(u1.last_name, str)
         self.assertEqual(u1.last_name, "")
-        u1.last_name = ''
+        u1.last_name = ""
         self.assertEqual(u1.last_name, "")
-        u1.last_name = 'a'
-        self.assertEqual(u1.last_name, 'a')
-        u1.last_name = 'abc'
-        self.assertEqual(u1.last_name, 'abc')
+        u1.last_name = "a"
+        self.assertEqual(u1.last_name, "a")
+        u1.last_name = "abc"
+        self.assertEqual(u1.last_name, "abc")
 
     def test_to_dict(self) -> None:
         """
