@@ -136,26 +136,50 @@ class HBNBCommand(cmd.Cmd):
             setattr(instance, args[2], args[3])
             instance.save()
 
+    def do_count(self, arg):
+        """
+        Count command to count the number of instances of a class
+        """
+        from models import available_models, storage
+
+        args = arg.split()
+        if args[0] not in available_models:
+            print("** class doesn't exist **")
+        else:
+            print(
+                len(
+                    [
+                        key
+                        for key in storage.all()
+                        if key.split(".")[0] == args[0]
+                    ]
+                )
+            )
+
     def default(self, line):
         """
         Default command to handle all other commands
         """
         from models import available_models, storage
 
+        args_dict = {
+            "all": self.do_all,
+            "count": self.do_count,
+            "show": self.do_show,
+            "destroy": self.do_destroy,
+            "update": self.do_update,
+        }
         args = line.split(".")
-        if args[0] in available_models:
-            if args[1] == "all()":
-                print(
-                    [
-                        str(value)
-                        for key, value in storage.all().items()
-                        if key.split(".")[0] == args[0]
-                    ]
-                )
+        if len(args) > 1:
+            if args[0] in available_models:
+                if args[1] in args_dict:
+                    args_dict[args[1]](args[0])
+                else:
+                    print("** no instance found **")
             else:
-                print("** no instance found **")
+                print("** class doesn't exist **")
         else:
-            print("** class doesn't exist **")
+            print("** no instance found **")
 
 
 if __name__ == "__main__":
