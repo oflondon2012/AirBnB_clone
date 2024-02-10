@@ -124,17 +124,17 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
         elif len(args) == 1:
             print("** instance id missing **")
+        elif f"{args[0]}.{args[1]}" not in storage.all():
+            print("** no instance found **")
         elif len(args) == 2:
             print("** attribute name missing **")
         elif len(args) == 3:
             print("** value missing **")
         else:
             key = args[0] + "." + args[1]
-            if key in storage.all():
-                setattr(storage.all()[key], args[2], args[3])
-                storage.all()[key].save()
-            else:
-                print("** no instance found **")
+            instance = storage.all()[key]
+            setattr(instance, args[2], args[3])
+            instance.save()
 
     # Do <class name>.all() to print all instances of a class
     def default(self, line):
