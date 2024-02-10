@@ -164,16 +164,22 @@ class HBNBCommand(cmd.Cmd):
             "show": self.do_show,
             "destroy": self.do_destroy,
             "count": self.do_count,
-            "update": self.do_update
+            "update": self.do_update,
         }
         dot_index = arg.find(".")
         if dot_index != -1:
-            argl = [arg[:dot_index], arg[dot_index+1:]]
+            argl = [arg[:dot_index], arg[dot_index + 1:]]
             open_paren_index = argl[1].find("(")
             close_paren_index = argl[1].find(")")
-            if open_paren_index != -1 and close_paren_index != -1 and open_paren_index < close_paren_index:
-                command = [argl[1][:open_paren_index], argl[1]
-                           [open_paren_index+1:close_paren_index]]
+            if (
+                open_paren_index != -1
+                and close_paren_index != -1
+                and open_paren_index < close_paren_index
+            ):
+                command = [
+                    argl[1][:open_paren_index],
+                    argl[1][open_paren_index + 1: close_paren_index],
+                ]
                 if command[0] in argdict.keys():
                     call = "{} {}".format(argl[0], command[1])
                     return argdict[command[0]](call)
