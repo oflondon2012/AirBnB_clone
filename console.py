@@ -1,4 +1,4 @@
-#!/uar/bin/env python
+#!/usr/bin/env python3
 
 """
 This is a simple console application that will allow the user to interact with
@@ -128,6 +128,28 @@ class HBNBCommand(cmd.Cmd):
                 storage.all()[key].save()
             else:
                 print("** no instance found **")
+
+    # Do <class name>.all() to print all instances of a class
+    def default(self, line):
+        """
+        Default command to handle all other commands
+        """
+        from models import available_models, storage
+
+        args = line.split(".")
+        if args[0] in available_models:
+            if args[1] == "all()":
+                print(
+                    [
+                        str(value)
+                        for key, value in storage.all().items()
+                        if key.split(".")[0] == args[0]
+                    ]
+                )
+            else:
+                print("** no instance found **")
+        else:
+            print("** class doesn't exist **")
 
 
 if __name__ == "__main__":
