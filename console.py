@@ -5,6 +5,7 @@ This is a simple console application that will allow the user to interact with
 the models of the application
 """
 import cmd
+import re
 
 
 class HBNBCommand(cmd.Cmd):
@@ -156,30 +157,28 @@ class HBNBCommand(cmd.Cmd):
                 )
             )
 
-    def default(self, line):
-        """
-        Default command to handle all other commands
-        """
-        from models import available_models, storage
-
-        args_dict = {
-            "all()": self.do_all,
-            "count()": self.do_count,
+    def default(self, arg):
+        """Default behavior for cmd module when input is invalid"""
+        argdict = {
+            "all": self.do_all,
             "show": self.do_show,
             "destroy": self.do_destroy,
-            "update": self.do_update,
+            "count": self.do_count,
+            "update": self.do_update
         }
-        args = line.split(".")
-        if len(args) > 1:
-            if args[0] in available_models:
-                if args[1] in args_dict:
-                    args_dict[args[1]](args[0])
-                else:
-                    print("** no instance found **")
-            else:
-                print("** class doesn't exist **")
-        else:
-            print("** no instance found **")
+        dot_index = arg.find(".")
+        if dot_index != -1:
+            argl = [arg[:dot_index], arg[dot_index+1:]]
+            open_paren_index = argl[1].find("(")
+            close_paren_index = argl[1].find(")")
+            if open_paren_index != -1 and close_paren_index != -1 and open_paren_index < close_paren_index:
+                command = [argl[1][:open_paren_index], argl[1]
+                           [open_paren_index+1:close_paren_index]]
+                if command[0] in argdict.keys():
+                    call = "{} {}".format(argl[0], command[1])
+                    return argdict[command[0]](call)
+
+        print("*** Unknown syntax: {}".format(arg))
 
 
 if __name__ == "__main__":
