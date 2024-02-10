@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
+
 """
 This module contains the tests for the base_model module
 """
+
 import unittest
 from models.base_model import BaseModel
 from datetime import datetime
@@ -101,3 +103,50 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(b5d["__class__"], "BaseModel")
         b5.save()
         self.assertIsInstance(storage.all(), dict)
+
+    def test_kwargs(self) -> None:
+        """
+        This method tests the kwargs argument of the BaseModel class
+        """
+        b6 = BaseModel()
+        self.assertIsInstance(b6, BaseModel)
+        self.assertIsInstance(b6.id, str)
+        self.assertIsInstance(b6.created_at, datetime)
+        self.assertIsInstance(b6.updated_at, datetime)
+        b6d = b6.to_dict()
+        self.assertIsInstance(b6d, dict)
+        b6m = BaseModel(**b6d)
+        self.assertIsInstance(b6m, BaseModel)
+        self.assertEqual(b6.id, b6m.id)
+        self.assertEqual(b6.created_at, b6m.created_at)
+        self.assertEqual(b6.updated_at, b6m.updated_at)
+        self.assertNotEqual(b6, b6m)
+        self.assertIsNot(b6, b6m)
+        self.assertIsInstance(b6m.id, str)
+        self.assertIsInstance(b6m.created_at, datetime)
+        self.assertIsInstance(b6m.updated_at, datetime)
+
+    def test_type(self) -> None:
+        """
+        This method tests the type of the BaseModel class
+        """
+        b7 = BaseModel()
+        self.assertIsInstance(b7, BaseModel)
+        self.assertIsInstance(b7.id, str)
+        self.assertIsInstance(b7.created_at, datetime)
+        self.assertIsInstance(b7.updated_at, datetime)
+        self.assertIsInstance(b7.id, str)
+        self.assertIsInstance(b7.created_at, datetime)
+        self.assertIsInstance(b7.updated_at, datetime)
+        self.assertIsInstance(b7.to_dict(), dict)
+        self.assertIsInstance(b7.to_dict()["id"], str)
+        self.assertIsInstance(b7.to_dict()["created_at"], str)
+        self.assertIsInstance(b7.to_dict()["updated_at"], str)
+        self.assertIsInstance(b7.to_dict()["__class__"], str)
+        self.assertEqual(b7.to_dict()["__class__"], "BaseModel")
+        self.assertIsInstance(b7.__str__(), str)
+        self.assertIsInstance(b7.to_dict(), dict)
+
+
+if __name__ == "__main__":
+    unittest.main()
