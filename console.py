@@ -2,7 +2,7 @@
 
 """
 This is a simple console application that will allow the user to interact with
-the
+the models of the application
 """
 import cmd
 
