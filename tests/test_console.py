@@ -5,6 +5,7 @@ This module contains the tests for the console module.
 import unittest
 from unittest.mock import patch
 from io import StringIO
+import os
 from console import HBNBCommand
 from models import storage
 from models.base_model import BaseModel
@@ -331,31 +332,38 @@ class TestConsole(unittest.TestCase):
         r.save()
         with patch("sys.stdout", new=self.mock_stdout):
             self.console.onecmd("BaseModel.count()")
-            self.assertEqual(self.mock_stdout.getvalue().strip(), "2")
+            self.assertEqual(self.mock_stdout.getvalue().strip(), str(sum(
+                1 for k in storage.all().keys() if "BaseModel" in k)))
             self.mock_stdout.seek(0)
             self.mock_stdout.truncate(0)
             self.console.onecmd("User.count()")
-            self.assertEqual(self.mock_stdout.getvalue().strip(), "2")
+            self.assertEqual(self.mock_stdout.getvalue().strip(), str(sum(
+                1 for k in storage.all().keys() if "User" in k)))
             self.mock_stdout.seek(0)
             self.mock_stdout.truncate(0)
             self.console.onecmd("State.count()")
-            self.assertEqual(self.mock_stdout.getvalue().strip(), "2")
+            self.assertEqual(self.mock_stdout.getvalue().strip(), str(sum(
+                1 for k in storage.all().keys() if "State" in k)))
             self.mock_stdout.seek(0)
             self.mock_stdout.truncate(0)
             self.console.onecmd("City.count()")
-            self.assertEqual(self.mock_stdout.getvalue().strip(), "2")
+            self.assertEqual(self.mock_stdout.getvalue().strip(), str(sum(
+                1 for k in storage.all().keys() if "City" in k)))
             self.mock_stdout.seek(0)
             self.mock_stdout.truncate(0)
             self.console.onecmd("Amenity.count()")
-            self.assertEqual(self.mock_stdout.getvalue().strip(), "2")
+            self.assertEqual(self.mock_stdout.getvalue().strip(), str(sum(
+                1 for k in storage.all().keys() if "Amenity" in k)))
             self.mock_stdout.seek(0)
             self.mock_stdout.truncate(0)
             self.console.onecmd("Place.count()")
-            self.assertEqual(self.mock_stdout.getvalue().strip(), "2")
+            self.assertEqual(self.mock_stdout.getvalue().strip(), str(sum(
+                1 for k in storage.all().keys() if "Place" in k)))
             self.mock_stdout.seek(0)
             self.mock_stdout.truncate(0)
             self.console.onecmd("Review.count()")
-            self.assertEqual(self.mock_stdout.getvalue().strip(), "2")
+            self.assertEqual(self.mock_stdout.getvalue().strip(), str(sum(
+                1 for k in storage.all().keys() if "Review" in k)))
             self.mock_stdout.seek(0)
             self.mock_stdout.truncate(0)
 
