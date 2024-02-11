@@ -28,25 +28,6 @@ class HBNBCommand(cmd.Cmd):
         """
         return True
 
-    def do_help(self, arg: str) -> bool | None:
-        """
-        Help command to display the help message
-        """
-        if arg:
-            print(
-                self.__class__.__dict__.
-                get(f"do_{arg}", self.do_help).__doc__
-            )
-        else:
-            print(
-                "\n"
-                "Documented commands (type help <topic>):\n"
-                "========================================\n"
-                "EOF  all  count  create  destroy  help  quit  show  update"
-                "\n"
-            )
-
-    # Handle blank lines
     def emptyline(self):
         """
         Empty line command to do nothing
