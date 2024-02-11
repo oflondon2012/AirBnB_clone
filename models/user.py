@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 """
-This module contains the User model
+This module contains the User model, which inherits from BaseModel.
 """
 
 from models.base_model import BaseModel

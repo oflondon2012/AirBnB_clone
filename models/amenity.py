@@ -1,7 +1,9 @@
 #!/usr/bin/python3
 
 """
-This module contains the Amenity class.
+This module contains the Amenity class, which inherits from BaseModel.
+Public class attributes:
+    name: string - empty string
 """
 
 from models.base_model import BaseModel

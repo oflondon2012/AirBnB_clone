@@ -1,7 +1,10 @@
 #!/usr/bin/python3
 
 """
-This module contains the City class.
+This module contains the City class, which inherits from BaseModel.
+Public class attributes:
+    state_id: string - empty string
+    name: string - empty string
 """
 
 from models.base_model import BaseModel

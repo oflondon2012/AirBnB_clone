@@ -1,7 +1,9 @@
 #!/usr/bin/python3
 
 """
-This module contains the State class..
+This module contains the State class, which inherits from BaseModel.
+Public class attributes:
+    name: string - empty string
 """
 
 from models.base_model import BaseModel

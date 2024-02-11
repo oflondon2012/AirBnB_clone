@@ -1,7 +1,11 @@
 #!/usr/bin/python3
 
 """
-This module contains the Review class.
+This module contains the Review class, which inherits from BaseModel.
+Public class attributes:
+    place_id: string - empty string
+    user_id: string - empty string
+    text: string - empty string
 """
 
 from models.base_model import BaseModel
