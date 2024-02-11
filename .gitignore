@@ -1,5 +1,6 @@
 # Folders
 __pycache__
+.mypy_cache
 
 # Files
 file.json

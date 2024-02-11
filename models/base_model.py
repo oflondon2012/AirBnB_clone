@@ -1,21 +1,21 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 
 """
 This module contains the base model class
 - BaseModel: the base model class
 - Public instance attributes:
-  - id: string - assign with an uuid when an instance is created
-  - created_at: datetime - assign with the current datetime when an
-    instance is created
-  - updated_at: datetime - assign with the current datetime when an
-    instance is created and it will be updated every time you change your
-    object
+    - id: string - assign with an uuid when an instance is created
+    - created_at: datetime - assign with the current datetime when an
+      instance is created
+    - updated_at: datetime - assign with the current datetime when an
+      instance is created and it will be updated every time you change your
+      object
 - __str__: should print: [<class name>] (<self.id>) <self.__dict__>
 - Public instance methods:
-  - save(self): updates the public instance attribute updated_at with
-    the current datetime
-  - to_dict(self): returns a dictionary containing all keys/values of
-    __dict__ of the instance
+    - save(self): updates the public instance attribute updated_at with
+      the current datetime
+    - to_dict(self): returns a dictionary containing all keys/values of
+      __dict__ of the instance
 """
 
 import uuid
