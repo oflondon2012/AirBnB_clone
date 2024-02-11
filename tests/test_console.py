@@ -2,6 +2,21 @@
 
 """
 This module contains the tests for the console module.
+- Class TestConsole
+    - Tests the console module.
+    - Methods
+        - setUp
+        - tearDown
+        - test_create
+        - test_show
+        - test_destroy
+        - test_all
+        - test_update
+        - test_count
+        - test_help
+        - test_emptyline
+        - test_EOF
+        - test_quit
 """
 
 import unittest
