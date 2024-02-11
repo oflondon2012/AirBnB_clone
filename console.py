@@ -77,7 +77,7 @@ class HBNBCommand(cmd.Cmd):
         from models import available_models, storage
 
         args = arg.split()
-        if not arg:
+        if not arg or not len(args):
             print("** class name missing **")
         elif args[0] not in available_models:
             print("** class doesn't exist **")
@@ -97,7 +97,7 @@ class HBNBCommand(cmd.Cmd):
         from models import available_models, storage
 
         args = arg.split()
-        if not arg:
+        if not arg or not len(args):
             print("** class name missing **")
         elif args[0] not in available_models:
             print("** class doesn't exist **")
@@ -119,7 +119,14 @@ class HBNBCommand(cmd.Cmd):
         from models import available_models, storage
 
         args = arg.split()
-        if args[0] not in available_models:
+        if not arg:
+            print(
+                [
+                    str(value)
+                    for value in storage.all().values()
+                ]
+            )
+        elif args[0] not in available_models:
             print("** class doesn't exist **")
         else:
             print(
@@ -137,7 +144,7 @@ class HBNBCommand(cmd.Cmd):
         from models import available_models, storage
 
         args = arg.split()
-        if not arg:
+        if not arg or not len(args):
             print("** class name missing **")
         elif args[0] not in available_models:
             print("** class doesn't exist **")
