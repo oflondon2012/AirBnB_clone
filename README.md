@@ -83,3 +83,4 @@ There are no known bugs at the time of release.
 ## Authors
 
 -   [Ukeme Edet](https://github.com/Ukeme-Edet)
+-   [Adebayo Tunde](https://github.com/oflondon2012)
