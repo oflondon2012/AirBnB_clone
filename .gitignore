@@ -1,6 +1,7 @@
 # Folders
 __pycache__
 .mypy_cache
+W3C-Validator
 
 # Files
 file.json
